@@ -1,0 +1,99 @@
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(135deg, #4CAF50, #2196F3);
+  }
+  
+  .phone {
+    width: 220px; /* Celular fino */
+    height: 400px; /* Proporção ajustada */
+    border: 8px solid black;
+    border-radius: 30px;
+    background-color: #ddd;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: height 0.5s ease, transform 0.5s ease;
+  }
+  
+  .phone.folded {
+    height: 200px; /* Dobrado */
+    transform: rotateX(10deg);
+  }
+  
+  .screen {
+    width: 100%;
+    height: 100%;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    animation: fadeIn 1s ease-in-out;
+  }
+  
+  header {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+  }
+  
+  main {
+    flex: 1;
+    padding: 10px;
+  }
+  
+  #icons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Ícones organizados em colunas */
+    gap: 10px;
+    margin: 20px 0;
+  }
+  
+  .app-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #4CAF50, #2196F3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .app-icon:hover {
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  #app-content {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background: #fff;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  

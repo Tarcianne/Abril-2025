@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modelo de Celular</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #e0e0e0, #ffffff);
+            font-family: Arial, sans-serif;
+        }
+        .phone {
+            width: 250px;
+            height: 500px;
+            background: black;
+            border-radius: 30px;
+            position: relative;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+        }
+        .screen {
+            width: 220px;
+            height: 400px;
+            background: linear-gradient(135deg, #2e2e2e, #1a1a1a);
+            border-radius: 20px;
+            margin: 15px auto 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+        .homeButton {
+            width: 60px;
+            height: 60px;
+            background: #444;
+            border-radius: 50%;
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+        }
+        .buttonLabel {
+            text-align: center;
+            color: white;
+            margin-top: 22px;
+            font-size: 14px;
+        }
+        .content {
+            color: white;
+            font-size: 20px;
+            text-align: center;
+            margin-top: 180px;
+        }
+        .topSpeaker {
+            width: 80px;
+            height: 10px;
+            background: #666;
+            border-radius: 5px;
+            position: absolute;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    </style>
+</head>
+<body>
+    <div class="phone">
+        <div class="topSpeaker"></div>
+        <div class="screen">
+            <div class="content" id="screenContent">Clique no botão!</div>
+        </div>
+        <div class="homeButton" id="homeButton">
+            <div class="buttonLabel">Início</div>
+        </div>
+    </div>
+
+    <script>
+        const homeButton = document.getElementById('homeButton');
+        const screenContent = document.getElementById('screenContent');
+
+        homeButton.addEventListener('click', () => {
+            screenContent.textContent = 'Bem-vindo!';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galaxy Z Flip6 Simulado</title>
+  <link rel="stylesheet" href="ja.css">
+</head>
+<body>
+  <div class="phone" id="phone">
+    <div class="screen" id="screen">
+      <header>
+        <h1>Galaxy Z Flip6</h1>
+        <button id="toggleFoldButton" onclick="toggleFold()">🔄 Dobrar</button>
+      </header>
+      <main>
+        <section id="icons">
+          <!-- Ícones de apps -->
+          <div class="app-icon" onclick="openApp('calls')">📞</div>
+          <div class="app-icon" onclick="openApp('notes')">📝</div>
+          <div class="app-icon" onclick="openApp('camera')">📷</div>
+          <div class="app-icon" onclick="openApp('music')">🎵</div>
+          <div class="app-icon" onclick="openApp('gallery')">🖼️</div>
+          <div class="app-icon" onclick="openApp('settings')">⚙️</div>
+        </section>
+        <div id="app-content">
+          <!-- O conteúdo dos aplicativos será exibido aqui -->
+        </div>
+      </main>
+    </div>
+  </div>
+  <script src="ja.js"></script>
+</body>
+</html>
