@@ -1,15 +1,16 @@
-package Abril;
+package wendel;
 
 import java.time.LocalDate;
 import java.time.Period;
 
+// Classe base Aluno
 class Aluno {
     private String nome;
     private String curso;
     private LocalDate nascimento;
     private int aulasAssistidas;
 
-    // Construtor
+    // Construtor da classe Aluno
     public Aluno(String nome, String curso, LocalDate nascimento, int aulasAssistidas) {
         this.nome = nome;
         this.curso = curso;
@@ -17,83 +18,89 @@ class Aluno {
         this.aulasAssistidas = aulasAssistidas;
     }
 
-    // Método para saudação
+    // Método de saudação
     public void saudacao() {
-        System.out.println("Olá! Eu sou " + nome + " e estou matriculado no curso " + curso + ". Seja bem-vindo!");
+        System.out.println("[Aluno] E aí! Eu sou " + nome + ", to fazendo o curso de " + curso + ". Bora estudar juntos!");
     }
 
-    // Método para calcular a idade
+    // Método que calcula idade com base na data de nascimento
     public int calcularIdade() {
         return Period.between(nascimento, LocalDate.now()).getYears();
     }
 
-    // Método para retornar relação de aulas assistidas
+    // Método que retorna quantas aulas o aluno já assistiu
     public String relacaoAulas() {
         return "Você assistiu " + aulasAssistidas + " aulas até agora!";
     }
 
-    // Método para receber aula ministrada pelo professor
+    // Método que simula o aluno recebendo uma aula
     public void receberAula(String aula) {
-        System.out.println(nome + " recebeu aula: " + aula);
+        System.out.println("[Aluno] " + nome + " recebeu a aula: " + aula);
     }
 
-    // Método Getter para nome
+    // Getter para acessar o nome do aluno (usado na classe Professor)
     public String getNome() {
         return nome;
     }
+
+    public String getCurso() {
+        return curso;
+    }
 }
 
+// Classe Professor que herda de Aluno
 class Professor extends Aluno {
     private String formacao;
     private String area;
 
-    // Construtor
+    // Construtor da classe Professor
     public Professor(String nome, String curso, LocalDate nascimento, int aulasAssistidas, String formacao, String area) {
-        super(nome, curso, nascimento, aulasAssistidas); // Chamando o construtor da classe base
+        super(nome, curso, nascimento, aulasAssistidas);
         this.formacao = formacao;
         this.area = area;
     }
 
-    // Método para saudação (sobrescrito)
+    // Sobrescreve o método saudacao() com um estilo mais formal
     @Override
     public void saudacao() {
-        System.out.println("Olá! Eu sou o professor " + getNome() + ". Com formação em " + formacao +
-                           ", atuo na área de " + area + ". Seja bem-vindo à aula!");
+        System.out.println("[Professor] Bom dia. Sou o professor " + getNome() +
+                ", formado em " + formacao + " e especializado em " + area +
+                ". É um prazer recebê-los na aula de " + getCurso() + ".");
     }
 
-    // Método para retornar aula ministrada
+    // Método exclusivo do professor para ministrar aula
     public String ministraAula(String nomeAula) {
-        return "O professor " + getNome() + " com formação em " + formacao +
-               " e área de atuação em " + area + " vai ministrar a aula: " + nomeAula;
+        return "Aula ministrada: " + nomeAula + " | Professor: " + getNome() + " | Área: " + area;
     }
 }
 
+// Classe principal onde tudo acontece
 public class Main {
     public static void main(String[] args) {
-        // Criando um objeto Aluno
+        // Cria o objeto Aluno
         Aluno aluno = new Aluno("João", "Java Básico", LocalDate.of(2000, 5, 10), 12);
 
-        // Criando um objeto Professor
-        Professor professor = new Professor("Carlos", "Java Avançado", LocalDate.of(1985, 3, 15), 5, "Computação", "Desenvolvimento de Software");
+        // Cria o objeto Professor
+        Aluno professor = new Professor("Carlos", "Java Avançado", LocalDate.of(1985, 3, 15), 5, "Computação", "Desenvolvimento de Software");
 
-        // Saudação do aluno
-        aluno.saudacao();
+        System.out.println("=== SAUDAÇÕES ===");
+        aluno.saudacao();       // Saudação do Aluno
+        professor.saudacao();   // Saudação do Professor
 
-        // Verificando as aulas assistidas pelo aluno
+        System.out.println("\n=== DETALHES DO ALUNO ===");
         System.out.println(aluno.relacaoAulas());
+        System.out.println("Idade do aluno: " + aluno.calcularIdade() + " anos.");
 
-        // Calculando a idade do aluno
-        System.out.println("Idade do aluno: " + aluno.calcularIdade());
+        System.out.println("\n=== AULA MINISTRADA ===");
+        // Verifica se professor é realmente um Professor
+        if (professor instanceof Professor prof) {
+            // Professor ministra aula
+            String aula = prof.ministraAula("Herança em Java");
 
-        // Saudação do professor
-        professor.saudacao();
+            // Aluno recebe essa aula
+            aluno.receberAula(aula);
+        }
 
-        // Professor ministrando uma aula
-        String aula = professor.ministraAula("Herança em Java");
-
-        // Aluno recebendo a aula ministrada pelo professor
-        aluno.receberAula(aula);
+        System.out.println("\n=== FIM DO PROGRAMA ===");
     }
 }
-
-
